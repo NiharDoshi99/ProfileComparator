@@ -104,7 +104,7 @@ class ProfileComparator:
     
     if(self.total_score >= 0):
       print(p1.first_name , p2.first_name)
-      print("total match score " + str(self.total_score))
+      print("total match score :" + str(self.total_score))
       print("matching attribute :",self.matching_attributes if len(self.matching_attributes) else "None")
       print("non matching attributes : ", self.none_matching_attributes if len(self.none_matching_attributes) else "None")
       print("ignored attributes : ", self.all_fields if len(self.all_fields) else "None")
