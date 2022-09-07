@@ -54,34 +54,13 @@ class ProfileComparator:
 
   def find_duplicates_between_two_profiles(self,p1, p2, fields):
     for field in fields:
-      if field == 'first_name':
+      if field == 'first_name' || field == 'last_name' || field == 'email_field':
         self.remove_field(field)
         self.firstName_lastName_email_match_score += self.get_similarity(p1, p2, field)
         self.name_email.add_field(field)
         continue
-      if field == 'last_name':
-        self.remove_field(field)
-        self.firstName_lastName_email_match_score += self.get_similarity(p1, p2, field)
-        self.name_email.add_field(field)
-        continue
-      if field == 'email_field':
-        self.remove_field(field)
-        self.firstName_lastName_email_match_score += self.get_similarity(p1, p2, field)
-        self.name_email.add_field(field)
-        continue
-      if field == 'date_of_birth':
+      if field == 'date_of_birth' || field == 'class_year':
         if self.check_if_null(p1, p2, field): 
-          continue
-        if self.check_if_matches(p1, p2, field):
-          self.remove_field(field)
-          self.matching_attributes.append(field)
-          self.increase_score()
-        else :
-          self.none_matching_attributes.append(field)
-          self.decrease_score()
-          
-      if field == 'class_year':
-        if self.check_if_null(p1, p2, field):
           continue
         if self.check_if_matches(p1, p2, field):
           self.remove_field(field)
